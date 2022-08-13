@@ -1,0 +1,8 @@
+.appContainer{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-template-rows: 72px 1fr;
+    grid-template-areas:
+    "h h h"
+    "n c c";
+}
