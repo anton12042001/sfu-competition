@@ -1,8 +1,8 @@
 import React from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {useDispatch} from "react-redux";
-import FormAuthRegister from "../../../components/Authorization/FormAuthRegister";
-import {setUser} from "../../../redux/auth-reducer";
+import FormAuthRegister from "../FormAuthRegister";
+import {setUser} from "../../../reduxTollkit/slices/userSlice";
 
 const Register = () => {
 
@@ -13,7 +13,6 @@ const Register = () => {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
             .then(({user}) => {
-                console.log(user)
                 dispatch(setUser({
                     email: user.email,
                     id: user.uid,

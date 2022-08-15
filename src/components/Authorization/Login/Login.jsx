@@ -1,9 +1,9 @@
 import React from 'react';
-import FormAuthLogin from "../../../components/Authorization/FormAuthLogin";
+import FormAuthLogin from "../FormAuthLogin";
 import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import {useDispatch} from "react-redux";
-import {setUser} from "../../../redux/auth-reducer";
 import {useNavigate} from "react-router-dom";
+import {setUser} from "../../../reduxTollkit/slices/userSlice";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -22,6 +22,7 @@ const Login = () => {
                     id: user.uid,
                     token: user.accessToken,
                 }))
+                navigate('/home')
             })
             .catch(console.error)
     }

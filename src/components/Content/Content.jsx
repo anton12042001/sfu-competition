@@ -3,7 +3,7 @@ import cl from './Content.module.css'
 import {useAuth} from "../../hooks/useAuth";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {setUser} from "../../redux/auth-reducer";
+import {removeUser} from "../../reduxTollkit/slices/userSlice";
 
 const Content = () => {
     const navigate = useNavigate()
@@ -11,15 +11,15 @@ const Content = () => {
 
     const {isAuth, email} = useAuth()
 debugger
-    return  (
+    return isAuth ?  (
         <div className={cl.content} >
             Контент
 
             Welcome
 
-                <button onClick={() => dispatch(setUser({email:  null, token: null, id: null}))} >Logout{email}</button>
+                <button onClick={() => dispatch(removeUser())} >Logout{email}</button>
         </div>
-    )
+    ) : navigate('/authorization')
 };
 
 export default Content;

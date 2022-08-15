@@ -24,4 +24,3 @@ const authReducer = (state = initialState, action) => {
 }
 
 export  const setUser = ({email, token, id}) => ({type: SET_USER, payload: {email, token, id}})
-export default authReducer
