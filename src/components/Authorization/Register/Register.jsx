@@ -24,6 +24,7 @@ const Register = () => {
 
     return (
         <div>
+            Зарегистрироваться
            <FormAuthRegister handleRegister={handleRegister}/>
         </div>
     );

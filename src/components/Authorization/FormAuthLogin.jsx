@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import cl from './Authorization.module.css'
 
 
 const FormAuthLogin = (props) => {
@@ -15,10 +16,14 @@ const onSubmit = (data) => {
 }
 
     return (
-        <div>
+        <div className={cl.authFormLogin} >
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("email")} type="email"/>
-                <input {...register("password")} type="password"/>
+                <div>
+                    <input placeholder={"Введите email"} {...register("email")} type="email"/>
+                </div>
+                <div>
+                    <input  placeholder={"Введите пароль"} {...register("password")} type="password"/>
+                </div>
                 <button type={"submit"}>Войти</button>
             </form>
         </div>

@@ -15,8 +15,12 @@ const FormAuthRegister = (props) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register("email")} type="email"/>
-            <input {...register("password")} type="password"/>
+            <div>
+                <input placeholder={"Введите email"}  {...register("email")} type="email"/>
+            </div>
+            <div>
+                <input placeholder={"Введите пароль"}  {...register("password")} type="password"/>
+            </div>
             <button type={"submit"}>Зарегистрироваться</button>
         </form>
     );

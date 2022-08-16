@@ -10,9 +10,13 @@ const Authorization = () => {
 
     return (
         <div className={cl.authContainer}>
-            {register ? <Register/> : <Login/>}
-            <button onClick={() => setRegister((false))} >Логин</button>
-            <button onClick={() => setRegister((true))} >Зарегистрироваться</button>
+            <div className={cl.authContent} >
+                {register ? <Register/> : <Login/>}
+                <div className={cl.authButton} >
+                    <button onClick={() => setRegister((false))}>Логин</button>
+                    <button onClick={() => setRegister((true))}>Зарегистрироваться</button>
+                </div>
+            </div>
         </div>
     );
 };

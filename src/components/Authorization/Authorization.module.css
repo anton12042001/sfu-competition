@@ -1,4 +1,18 @@
 .authContainer{
-    border: 1px solid black;
-    height: 200px;
+    height: 500px;
+    background: darkgoldenrod;
+
+}
+.authContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: skyblue;
+    width: 450px;
+    height: 400px;
+    margin: 20px auto 0 auto;
+}
+.authButton{
+    margin: 25px 0 0 0;
 }
