@@ -1,7 +1,21 @@
-.navbar{
+.nav{
     grid-area: n;
     background: bisque;
 }
-.navbarContent{
+.blockDescription{
     height: 500px;
+}
+.item {
+    width: 153px;
+    height: 28px;
+    line-height: 27px;
+}
+.item a{
+    color: black;
+    text-decoration: none;
+}
+
+.item a.active{
+    color: teal;
+    font-weight: bold;
 }

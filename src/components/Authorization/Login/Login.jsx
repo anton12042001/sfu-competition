@@ -10,19 +10,16 @@ const Login = () => {
     const dispatch = useDispatch()
 
     const handleLogin = (email, password) => {
-        debugger
         const auth = getAuth();
-        debugger
         signInWithEmailAndPassword(auth, email, password)
             .then(({user}) => {
                 console.log(user)
-                debugger
                 dispatch(setUser({
                     email: user.email,
                     id: user.uid,
                     token: user.accessToken,
                 }))
-                navigate('/home')
+                navigate('/content')
             })
             .catch(console.error)
     }

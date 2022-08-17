@@ -1,16 +1,18 @@
 import React from 'react';
 import cl from './Navbar.module.css'
+import Home from "./Home/Home";
+import Chat from "./Chat/Chat";
 
 
 const Navbar = () => {
     return (
-        <div className={cl.navbar} >
-            <div className={cl.navbarContent} >
-                <div>Главная</div>
-                <div>чат</div>
+        <nav className={cl.nav} >
+            <div className={cl.blockDescription} >
+                <Home/>
+                <Chat/>
                 <div>Загрузить проект</div>
             </div>
-        </div>
+        </nav>
     );
 };
 

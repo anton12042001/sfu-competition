@@ -9,10 +9,14 @@ const HeaderCurrentUser = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const logout = () => {
+        dispatch(removeUser())
+        navigate('/authorization')
+    }
 
     return isAuth ? (
         <div>
-            <button onClick={() => dispatch(removeUser())} >Logout {email}</button>
+            <button onClick={logout} >Logout {email}</button>
 
         </div>
     ) : (
