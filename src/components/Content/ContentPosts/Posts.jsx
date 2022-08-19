@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Posts = (props) => {
-    debugger
     return (
         <div>
             <div>{props.title}</div>
