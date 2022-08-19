@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import cl from "./App.module.css"
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
@@ -7,9 +7,15 @@ import {Route, Routes, useNavigate} from "react-router-dom"
 import Authorization from "./components/Authorization/Authorization";
 import {useAuth} from "./hooks/useAuth";
 
+
 function App() {
     const {isAuth} = useAuth()
     const navigate = useNavigate()
+
+
+    useEffect(() => {
+
+    }, [])
 
     return (
         <div className={cl.appContainer}>
