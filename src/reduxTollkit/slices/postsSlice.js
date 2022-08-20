@@ -12,13 +12,13 @@ const postsSlice = createSlice({
     initialState,
     reducers: {
         setPost(state,action) {
+            debugger
             let newPost = {
                 title: action.payload.title,
                 body: action.payload.body,
                 image: action.payload.image,
             }
-            debugger
-            state.posts.push(newPost)
+            state.posts.push(action.payload)
         }
     },
 })

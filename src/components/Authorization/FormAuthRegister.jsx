@@ -9,7 +9,6 @@ const FormAuthRegister = (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
-        debugger
         props.handleRegister(data.email, data.password)
     }
 

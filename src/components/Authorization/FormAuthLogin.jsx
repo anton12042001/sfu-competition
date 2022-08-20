@@ -11,7 +11,6 @@ const FormAuthLogin = (props) => {
     } = useForm();
 
 const onSubmit = (data) => {
-    debugger
     props.handleLogin(data.email, data.password)
 }
 
