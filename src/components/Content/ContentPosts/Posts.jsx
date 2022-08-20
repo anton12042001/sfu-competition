@@ -5,7 +5,6 @@ const Posts = (props) => {
         <div>
             <div>{props.title}</div>
             <div>{props.body}</div>
-            <div>Изображение</div>
             <div>======================</div>
         </div>
     );

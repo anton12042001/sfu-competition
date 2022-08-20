@@ -9,7 +9,7 @@ const ContentSetPostForm = (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
-        //reset()
+        // reset()
         props.handlePost(data)
     }
 
@@ -20,9 +20,6 @@ const ContentSetPostForm = (props) => {
             </div>
             <div>
                 <input placeholder={"Описание поста"}  {...register("body")} type="text"/>
-            </div>
-            <div>
-                <input  {...register("image")} type="file"/>
             </div>
             <button type={"submit"}>Добавить пост</button>
         </form>

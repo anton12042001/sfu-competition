@@ -8,14 +8,16 @@
 //     const dispatch = useDispatch()
 //     get(child(dbRef, `posts/`))
 //         .then((snapshot) => {
-//         if (snapshot.exists()) {
-//             console.log(snapshot.val())
-//             dispatch(setPost(snapshot.val()))
-//         } else {
-//             console.log("No data available");
-//         }
-//     }).catch((error) => {
+//             if (snapshot.exists()) {
+//                 let data = snapshot.val()
+//                 data.map(p => {
+//                     dispatch(setPost(p))
+//                 })
+//             } else {
+//                 console.log("No data available");
+//             }
+//         }).catch((error) => {
 //         console.error(error);
 //     });
 // }
-
+//

@@ -16,7 +16,6 @@ const postsSlice = createSlice({
             let newPost = {
                 title: action.payload.title,
                 body: action.payload.body,
-                image: action.payload.image,
             }
             state.posts.push(action.payload)
         }

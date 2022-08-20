@@ -12,6 +12,7 @@ const Content = (props) => {
 
     const {id} = useSelector(state => state.user)
     const dispatch = useDispatch()
+    const dbRef = ref(getDatabase());
 
 
     const [value,setValue] = useState(0)
@@ -24,10 +25,9 @@ const Content = (props) => {
         set(ref(db,'posts/' + value), {
             title: data.title,
             body: data.body,
-            image: data.image
         }).then(() => {
             console.log("засеталсоь")
-            // dispatch(setPost(data))
+            get(child(dbRef, `posts/`))
         })
             .catch(console.error)
         setValue(value + 1)
