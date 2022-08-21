@@ -7,27 +7,25 @@ import {setPost} from "../../../reduxTollkit/slices/postsSlice";
 
 const ContentPosts = () => {
     const {posts} = useSelector(state => state.posts)
-    console.log(posts)
-
 
     const dbRef = ref(getDatabase());
     const dispatch = useDispatch()
 
-        if (!posts.length){
-            get(child(dbRef, `posts/`))
-                .then((snapshot) => {
-                    if (snapshot.exists()) {
-                        let data = snapshot.val()
-                        data.map(p => {
-                            dispatch(setPost(p))
-                        })
-                    } else {
-                        console.log("No data available");
-                    }
-                }).catch((error) => {
-                console.error(error);
-            });
-        }
+        // if (!posts.length){
+        //     get(child(dbRef, `posts/`))
+        //         .then((snapshot) => {
+        //             if (snapshot.exists()) {
+        //                 let data = snapshot.val()
+        //                 data.map(p => {
+        //                     dispatch(setPost(p))
+        //                 })
+        //             } else {
+        //                 console.log("No data available");
+        //             }
+        //         }).catch((error) => {
+        //         console.error(error);
+        //     });
+        // }
 
     return (
         <div>
