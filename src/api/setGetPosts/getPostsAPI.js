@@ -1,9 +1,8 @@
-import {useDispatch} from "react-redux";
-import {child, getDatabase, ref,get} from "firebase/database";
-import {setPost} from "../../reduxTollkit/slices/postsSlice";
+import {child, get, getDatabase, ref} from "firebase/database";
+
 debugger
 
-export const getPostsAPI = (setValue) => {
+export const getPostsAPI = () => {
     const dbRef = ref(getDatabase());
     return get(child(dbRef, `posts/`))
 }
