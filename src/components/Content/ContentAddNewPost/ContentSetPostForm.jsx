@@ -10,7 +10,7 @@ const ContentSetPostForm = (props) => {
 
     const onSubmit = (data) => {
         reset()
-        props.handlePost(data)
+        props.dataPosts(data)
     }
 
     return (

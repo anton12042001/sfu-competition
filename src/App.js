@@ -6,16 +6,13 @@ import Content from "./components/Content/Content";
 import {Route, Routes, useNavigate} from "react-router-dom"
 import Authorization from "./components/Authorization/Authorization";
 import {useAuth} from "./hooks/useAuth";
+import ContentContainer from "./components/Content/ContentContainer";
 
 
 function App() {
     const {isAuth} = useAuth()
     const navigate = useNavigate()
 
-
-    useEffect(() => {
-
-    }, [])
 
     return (
         <div className={cl.appContainer}>
@@ -25,7 +22,7 @@ function App() {
             <div className={cl.appWrapperContent} >
                 <Routes>
                     <Route path={'/authorization'} element={<Authorization/>} />
-                    <Route path={'/content'} element={<Content/>} />
+                    <Route path={'/content'} element={<ContentContainer/>} />
                 </Routes>
             </div>
         </div>
