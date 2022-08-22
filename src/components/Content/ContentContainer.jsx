@@ -7,11 +7,20 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import cl from "./Content.module.css";
 import Loader from "../UI/Loader/Loader";
+import {useEffect} from "react";
+
 
 const ContentContainer = () => {
     const [value, setValue] = useState(0)
     const [loading, setLoading] = useState(false)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        getPostsAPI(setValue)
+            .then((snapshot) => {
+                setValue(snapshot.val().length)
+            })
+    }, [])
 
     const handlePost = (data) => {
         setPostsAPI(data, value).then(r => {
