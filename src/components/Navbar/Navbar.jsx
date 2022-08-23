@@ -2,6 +2,7 @@ import React from 'react';
 import cl from './Navbar.module.css'
 import Home from "./Home/Home";
 import Chat from "./Chat/Chat";
+import SendProject from "./SendProject/SendProject";
 
 
 const Navbar = () => {
@@ -10,7 +11,7 @@ const Navbar = () => {
             <div className={cl.blockDescription} >
                 <Home/>
                 <Chat/>
-                <div>Загрузить проект</div>
+                <SendProject/>
             </div>
         </nav>
     );

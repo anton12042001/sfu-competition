@@ -9,7 +9,8 @@ const FormAuthRegister = (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
-        props.handleRegister(data.email, data.password)
+        reset()
+        props.signUpDB(data.email, data.password)
     }
 
     return (

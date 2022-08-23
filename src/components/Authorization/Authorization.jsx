@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import cl from './Authorization.module.css'
-import Register from "./Register/Register";
-import Login from "./Login/Login";
+import LoginContainer from "./Login/LoginContainer";
+import RegisterContainer from "./Register/RegisterContainer";
 
 
 const Authorization = () => {
@@ -11,7 +11,7 @@ const Authorization = () => {
     return (
         <div className={cl.authContainer}>
             <div className={cl.authContent} >
-                {register ? <Register/> : <Login/>}
+                {register ? <RegisterContainer/> : <LoginContainer/>}
                 <div className={cl.authButton} >
                     <button onClick={() => setRegister((false))}>Логин</button>
                     <button onClick={() => setRegister((true))}>Зарегистрироваться</button>

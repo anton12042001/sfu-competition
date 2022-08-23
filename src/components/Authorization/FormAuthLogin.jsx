@@ -11,7 +11,8 @@ const FormAuthLogin = (props) => {
     } = useForm();
 
 const onSubmit = (data) => {
-    props.handleLogin(data.email, data.password)
+    reset()
+    props.loginDB(data.email, data.password)
 }
 
     return (
