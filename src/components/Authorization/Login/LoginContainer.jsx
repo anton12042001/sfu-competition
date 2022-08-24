@@ -13,6 +13,7 @@ const LoginContainer = () => {
     const handleLogin = (email, password) => {
         loginAPI(email,password)
             .then(({user}) => {
+                console.log(user)
                 dispatch(setUser({email: user.email, id: user.uid, token: user.accessToken,}))
                 navigate('/content')
             })
