@@ -4,6 +4,7 @@ const initialState = {
     email: null,
     token: null,
     id: null,
+    admin: null,
 }
 
 
@@ -16,7 +17,7 @@ const userSlice = createSlice({
             state.token = action.payload.token
             state.id = action.payload.id
         },
-        removeUser(state) {
+        removeUser(state, action) {
             state.email = null
             state.token = null
             state.id = null

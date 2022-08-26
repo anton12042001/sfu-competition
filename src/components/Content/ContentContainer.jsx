@@ -12,13 +12,12 @@ import {useEffect} from "react";
 
 const ContentContainer = () => {
     const [value, setValue] = useState(0)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const {posts} = useSelector(state => state.posts)
 
 
     useEffect(() => {
-        setLoading(true)
         getPostsAPI(setValue)
             .then((snapshot) => {
                 setValue(snapshot.val().length)

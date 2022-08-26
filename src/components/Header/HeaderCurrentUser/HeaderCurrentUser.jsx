@@ -3,6 +3,7 @@ import {useAuth} from "../../../hooks/useAuth";
 import {removeUser} from "../../../reduxTollkit/slices/userSlice";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {removeProject} from "../../../reduxTollkit/slices/projectSlice";
 
 const HeaderCurrentUser = () => {
     const {isAuth, email} = useAuth()
@@ -11,6 +12,7 @@ const HeaderCurrentUser = () => {
 
     const logout = () => {
         dispatch(removeUser())
+        dispatch(removeProject())
         navigate('/authorization')
     }
 

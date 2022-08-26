@@ -1,44 +1,52 @@
 import React, {useEffect, useState} from 'react';
 import DownloadProject from "./DownloadProject";
-import {child, get, getDatabase, ref, set} from "firebase/database";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {loadingProjectAPI} from "../../api/project/loadingProjectAPI";
+import {getProjectAPI} from "../../api/project/getProjectAPI";
+import Loader from "../UI/Loader/Loader";
+import cl from "./DownloadProjectContainer.module.css"
+import {getProject} from "../../reduxTollkit/slices/projectSlice";
 
 
 const DownloadProjectContainer = () => {
     const {id} = useSelector(state => state.user)
     const [isUserProject, setIsUserProject] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
-        const dbRef = ref(getDatabase());
-        get(child(dbRef, `project/${id}`))
+        getProjectAPI(id)
             .then((snapshot) => {
-                (snapshot.val() && setIsUserProject(true) )
+                if(snapshot.val()){
+                    setIsUserProject(true)
+                    dispatch(getProject(snapshot.val()))
+                }
+                setLoading(false)
             })
     }, [])
 
 
     const handleProject = (data) => {
-        const db = getDatabase();
-        set(ref(db, 'project/' + `${id}`), {
-            fullName: data.fullName,
-            email: data.email,
-            phone: data.phone,
-            project: data.project,
-        }).then(() => {
-            const dbRef = ref(getDatabase());
-            get(child(dbRef, `project/${id}`))
-                .then((snapshot) => {
-                    (snapshot.val() && setIsUserProject(true) )
-                })
+        loadingProjectAPI(data, id).then(() => {
+            getProjectAPI(id).then((snapshot) => {
+                (snapshot.val() && setIsUserProject(true))
+            })
         })
 
     }
 
+    if (loading) {
+        return <div className={cl.loader}><Loader/></div>
+    }
 
     return (
         <div>
-            <DownloadProject setIsUserProject={setIsUserProject} isUserProject={isUserProject}  handleProject={handleProject}/>
+            <DownloadProject
+                setIsUserProject={setIsUserProject}
+                isUserProject={isUserProject}
+                handleProject={handleProject}
+            />
         </div>
     );
 };

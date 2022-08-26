@@ -3,6 +3,7 @@ import cl from "./DownloadProjectContainer.module.css"
 import DownloadProjectForm from "./DownloadProjectForm/DownloadProjectForm";
 
 const DownloadProject = ({isUserProject,handleProject,setIsUserProject}) => {
+
     const loadProject = (data) => {
         handleProject(data)
     }
@@ -11,7 +12,11 @@ const DownloadProject = ({isUserProject,handleProject,setIsUserProject}) => {
         <div>
             <div className={cl.title} >Загрузка проекта</div>
             {isUserProject && <div>Ваш проект отправлен!</div>}
-            <DownloadProjectForm setIsUserProject={setIsUserProject} isUserProject={isUserProject} loadProject={loadProject} />
+            <DownloadProjectForm
+                setIsUserProject={setIsUserProject}
+                isUserProject={isUserProject}
+                loadProject={loadProject}
+            />
         </div>
     );
 };
