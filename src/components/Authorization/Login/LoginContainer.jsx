@@ -4,6 +4,7 @@ import {setUser} from "../../../reduxTollkit/slices/userSlice";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {loginAPI} from "../../../api/login/loginAPI";
+import firebase from "firebase/compat";
 
 const LoginContainer = () => {
 
@@ -19,6 +20,36 @@ const LoginContainer = () => {
             })
             .catch(console.error)
     }
+
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            // User is signed in. Get the ID token.
+            return result.user.getIdToken();
+        })
+        .then((idToken) => {
+            // Pass the ID token to the server.
+            $.post(
+                '/setCustomClaims',
+                {
+                    idToken: idToken
+                },
+                (data, status) => {
+                    // This is not required. You could just wait until the token is expired
+                    // and it proactively refreshes.
+                    if (status == 'success' && data) {
+                        const json = JSON.parse(data);
+                        if (json && json.status == 'success') {
+                            // Force token refresh. The token claims will contain the additional claims.
+                            firebase.auth().currentUser.getIdToken(true);
+                        }
+                    }
+                });
+        }).catch((error) => {
+        console.log(error);
+    });
+
+
 
 
     return (
