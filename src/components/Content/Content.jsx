@@ -12,7 +12,7 @@ const Content = (props) => {
     }
 
     //todo переписать проверку на админа
-
+//Реализация бд части
 
     return (
         <div className={cl.content}>

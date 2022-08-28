@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import cl from "./Content.module.css";
 import Loader from "../UI/Loader/Loader";
 import {useEffect} from "react";
-import firebase from "firebase/compat";
+
 
 
 const ContentContainer = () => {
@@ -40,18 +40,6 @@ const ContentContainer = () => {
         })
     }
 
-
-
-    firebase.auth().currentUser.getIdTokenResult()
-        .then((idTokenResult) => {
-
-            if (!!idTokenResult.claims.admin) {
-                console.log(idTokenResult)
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        });
 
 
 
