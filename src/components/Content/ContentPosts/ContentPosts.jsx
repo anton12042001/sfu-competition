@@ -6,7 +6,6 @@ import cl from './ContentPosts.module.css'
 
 const ContentPosts = () => {
     const {posts} = useSelector(state => state.posts)
-
     if (!posts.length) {
         return <div className={cl.notPosts}>Посты не найдены...</div>
     }

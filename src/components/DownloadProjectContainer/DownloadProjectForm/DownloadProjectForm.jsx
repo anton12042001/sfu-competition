@@ -7,7 +7,6 @@ import {useSelector} from "react-redux";
 const DownloadProjectForm = ({isUserProject,loadProject,setIsUserProject}) => {
 
     const {email,phone,fullName,project} = useSelector(state => state.project)
-    debugger
 
     const {
         handleSubmit,

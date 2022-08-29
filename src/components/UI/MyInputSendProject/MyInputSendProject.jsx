@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MyInputSendProject = (props) => {
-    debugger
     const { field } = props
     return (
         <div>

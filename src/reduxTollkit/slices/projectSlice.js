@@ -4,7 +4,8 @@ const initialState = {
     email: null,
     fullName: null,
     phone: null,
-    project: null
+    project: null,
+    showProject: [],
 }
 
 
@@ -24,9 +25,13 @@ const projectSlice = createSlice({
             state.fullName = null
             state.phone = null
             state.project = null
+        },
+        adminShowProject(state,action) {
+            debugger
+            state.showProject.push(action.payload)
         }
     },
 })
-export const {getProject,removeProject} = projectSlice.actions
+export const {getProject,removeProject,adminShowProject} = projectSlice.actions
 
 export default  projectSlice.reducer
