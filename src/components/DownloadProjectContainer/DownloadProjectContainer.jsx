@@ -6,13 +6,19 @@ import {getProjectAPI} from "../../api/project/getProjectAPI";
 import Loader from "../UI/Loader/Loader";
 import cl from "./DownloadProjectContainer.module.css"
 import {getProject} from "../../reduxTollkit/slices/projectSlice";
+import {useNavigate} from "react-router-dom";
 
 
 const DownloadProjectContainer = () => {
-    const {id} = useSelector(state => state.user)
+    const {id,email} = useSelector(state => state.user)
     const [isUserProject, setIsUserProject] = useState(false)
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    if(!email) {
+        navigate('/authorization')
+    }
 
 
     useEffect(() => {

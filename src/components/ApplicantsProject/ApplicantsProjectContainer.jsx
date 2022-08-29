@@ -6,7 +6,6 @@ const ApplicantsProjectContainer = () => {
 
 
 
-
     return (
         <div>
             <ApplicantsProject/>

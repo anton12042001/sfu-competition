@@ -4,21 +4,25 @@ import {child, get, getDatabase, ref} from "firebase/database";
 import {useDispatch, useSelector} from "react-redux";
 import {adminShowProject} from "../../reduxTollkit/slices/projectSlice";
 import Project from "./Project/Project";
-import {setPost} from "../../reduxTollkit/slices/postsSlice";
+import {useNavigate} from "react-router-dom";
+
 
 const ApplicantsProject = () => {
-
+    const {email} = useSelector(state => state.user)
     const {showProject} = useSelector(state => state.project)
-    debugger
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
+    if(!email) {
+        navigate('/authorization')
+    }
 
     useEffect(() => {
         const dbRef = ref(getDatabase());
         (!showProject.length && get(child(dbRef, `project/`))
             .then((snapshot) => {
                 debugger
-                !showProject.length && Object.values(snapshot.val()).map(p => {dispatch(adminShowProject(p))})
+                !showProject.length && Object.values(snapshot.val()).reverse().map(p => {dispatch(adminShowProject(p))})
 
             }))
     },[])
