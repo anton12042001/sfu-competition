@@ -18,9 +18,8 @@ const ApplicantsProject = () => {
         (!showProject.length && get(child(dbRef, `project/`))
             .then((snapshot) => {
                 debugger
-                // !showProject.length && snapshot.val().map(p => {dispatch(adminShowProject(p))})
-                console.log(snapshot.val())
-                dispatch(adminShowProject(snapshot.val()))
+                !showProject.length && Object.values(snapshot.val()).map(p => {dispatch(adminShowProject(p))})
+
             }))
     },[])
 
