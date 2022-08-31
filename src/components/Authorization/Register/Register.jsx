@@ -11,7 +11,7 @@ const Register = (props) => {
     return (
         <div>
             Зарегистрироваться
-           <FormAuthRegister signUpDB={signUpDB}/>
+           <FormAuthRegister email={props.email} signUpDB={signUpDB}/>
         </div>
     );
 };

@@ -6,16 +6,16 @@ import {useNavigate} from "react-router-dom";
 import {loginAPI} from "../../../api/login/loginAPI";
 
 const LoginContainer = () => {
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleLogin = (email, password) => {
         loginAPI(email,password)
             .then(({user}) => {
+                (user.emailVerified === false) && navigate('/mailVerification')
                 console.log(user)
                 dispatch(setUser({email: user.email, id: user.uid, token: user.accessToken,}))
-                navigate('/content')
+                // navigate('/content')
             })
             .catch(console.error)
     }

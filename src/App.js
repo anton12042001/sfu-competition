@@ -7,6 +7,7 @@ import Authorization from "./components/Authorization/Authorization";
 import ContentContainer from "./components/Content/ContentContainer";
 import DownloadProjectContainer from "./components/DownloadProjectContainer/DownloadProjectContainer";
 import ApplicantsProjectContainer from "./components/ApplicantsProject/ApplicantsProjectContainer";
+import EmailVerificationContainer from "./components/EmailVerification/EmailVerificationContainer";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     <Route path={'/content'} element={<ContentContainer/>} />
                     <Route path={'/project'} element={<DownloadProjectContainer/>} />
                     <Route path={'/adminsShowProject'} element={<ApplicantsProjectContainer/>} />
+                    <Route path={'/mailVerification'} element={<EmailVerificationContainer/>} />
                 </Routes>
             </div>
         </div>
