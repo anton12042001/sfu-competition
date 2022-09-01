@@ -23,12 +23,13 @@ const RegisterContainer = () => {
                     .then(() => {
                         setShowMessagesEmailVerf(true)
                     })
-                dispatch(setUser({
-                    email: user.email,
-                    id: user.uid,
-                    token: user.accessToken,
-                }))
+                // dispatch(setUser({
+                //     email: user.email,
+                //     id: user.uid,
+                //     token: user.accessToken,
+                // }))
                 navigate('/mailVerification')
+                (email) && navigate('/content')
 
 
 

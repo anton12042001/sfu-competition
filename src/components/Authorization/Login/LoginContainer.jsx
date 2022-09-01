@@ -12,10 +12,9 @@ const LoginContainer = () => {
     const handleLogin = (email, password) => {
         loginAPI(email,password)
             .then(({user}) => {
-                (user.emailVerified === false) && navigate('/mailVerification')
+                (user.emailVerified === false) ? navigate('/mailVerification') : navigate('/content')
                 console.log(user)
                 dispatch(setUser({email: user.email, id: user.uid, token: user.accessToken,}))
-                // navigate('/content')
             })
             .catch(console.error)
     }

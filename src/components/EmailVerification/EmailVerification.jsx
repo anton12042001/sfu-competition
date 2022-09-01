@@ -1,23 +1,25 @@
-import React from 'react';
-import {getAuth,} from "firebase/auth";
+import React, {useState} from 'react';
+import {useNavigate} from "react-router-dom";
+import Timer from "../utils/Timer/Timer";
 
 const EmailVerification = (props) => {
+    const navigate = useNavigate()
 
-    const verificationMailSend = () => {
-        const auth = getAuth()
-        console.log(getAuth().currentUser.emailVerified)
-
+    const redirectToLogin = () => {
+        navigate('/authorization')
     }
-
-
     return (
         <div>
             <div>На вашу электронную почту было отправлено письмо. Подтвердите, пожалуйста, свою почту</div>
             <div>
-                <button onClick={props.verificationMail} >Прислать письмо еще раз</button>
+                <button onClick={props.verificationMail} disabled={props.timer} >Прислать письмо еще раз</button>
+                
             </div>
             <div>
-                <button onClick={verificationMailSend} >Проверить подтверждение почты</button>
+                {props.sendMessageToMail && <div>Письмо успешно отправлено</div>}
+            </div>
+            <div>
+                <button onClick={redirectToLogin}>Перейти к авторизации</button>
             </div>
         </div>
     );
