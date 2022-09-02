@@ -13,7 +13,13 @@ const EmailVerification = (props) => {
             <div>На вашу электронную почту было отправлено письмо. Подтвердите, пожалуйста, свою почту</div>
             <div>
                 <button onClick={props.verificationMail} disabled={props.timer} >Прислать письмо еще раз</button>
-                <Timer setTimerActive={props.setTimerActive} timerActive={props.timerActive} />
+                <Timer
+                    setTimer={props.setTimer}
+                    setSeconds={props.setSeconds}
+                    seconds={props.seconds}
+                    setTimerActive={props.setTimerActive}
+                    timerActive={props.timerActive}
+                />
             </div>
             <div>
                 {props.sendMessageToMail && <div>Письмо успешно отправлено</div>}
