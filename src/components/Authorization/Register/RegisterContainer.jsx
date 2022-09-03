@@ -1,17 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Register from "./Register";
 import {createUserWithEmailAndPassword, getAuth, sendEmailVerification} from "firebase/auth";
-import {setUser} from "../../../reduxTollkit/slices/userSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import cl from './Register.module.css'
 
 const RegisterContainer = () => {
     const [showMessagesEmailVerf, setShowMessagesEmailVerf] = useState(false)
-    const [emailVerf, setEmailVerf] = useState(false)
     const {email} = useSelector(state => state.user)
-
-    const dispatch = useDispatch()
     const auth = getAuth();
     const navigate = useNavigate()
 
@@ -23,11 +19,7 @@ const RegisterContainer = () => {
                     .then(() => {
                         setShowMessagesEmailVerf(true)
                     })
-                // dispatch(setUser({
-                //     email: user.email,
-                //     id: user.uid,
-                //     token: user.accessToken,
-                // }))
+
                 navigate('/mailVerification')
                 (email) && navigate('/content')
 

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import EmailVerification from "./EmailVerification";
 import {getAuth, sendEmailVerification} from "firebase/auth";
+import {sendMessagesAPI} from "../../api/sendEmailVerification/sendMessagesAPI";
 
 const EmailVerificationContainer = () => {
     const [sendMessageToMail, setSendMessageToMail] = useState(false)
@@ -11,14 +12,11 @@ const EmailVerificationContainer = () => {
 
 
     useEffect(() => {
-        if (seconds === 60){
-            setTimer(false)
-        }
+        seconds === 60 && setTimer(false)
     },[seconds])
 
     const verificationMail = () => {
-        const auth = getAuth();
-        sendEmailVerification(auth.currentUser)
+        sendMessagesAPI()
             .then(() => {
                 setTimer(true)
                 setSendMessageToMail(true)

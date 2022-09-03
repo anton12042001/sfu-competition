@@ -1,14 +1,17 @@
 import React from 'react';
 import cl from './Header.module.css'
 import HeaderCurrentUser from "./HeaderCurrentUser/HeaderCurrentUser";
-import {useAuth} from "../../hooks/useAuth";
+import HeaderPersonalCubnet from "./HeaderPersonalCubnet/HeaderPersonalCubnet";
 
 const Header = (props) => {
 
     return (
         <div className={cl.header} >
             Шапка
-            <HeaderCurrentUser/>
+            <div className={cl.currentUserInfo} >
+                <HeaderCurrentUser/>
+                <HeaderPersonalCubnet/>
+            </div>
         </div>
     );
 };
