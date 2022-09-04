@@ -4,7 +4,7 @@ import ApplicantsProject from "./ApplicantsProject";
 const ApplicantsProjectContainer = () => {
 
 
-
+//todo вынести все сайдэффекты сюда
 
     return (
         <div>

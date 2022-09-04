@@ -8,7 +8,7 @@ import ContentContainer from "./components/Content/ContentContainer";
 import DownloadProjectContainer from "./components/DownloadProjectContainer/DownloadProjectContainer";
 import ApplicantsProjectContainer from "./components/ApplicantsProject/ApplicantsProjectContainer";
 import EmailVerificationContainer from "./components/EmailVerification/EmailVerificationContainer";
-import PersonalCubnet from "./components/PersonalCubnet/PersonalCubnet";
+import PersonalCubnetContainer from "./components/PersonalCubnet/PersonalCubnetContainer";
 
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
                     <Route path={'/project'} element={<DownloadProjectContainer/>} />
                     <Route path={'/adminsShowProject'} element={<ApplicantsProjectContainer/>} />
                     <Route path={'/mailVerification'} element={<EmailVerificationContainer/>} />
-                    <Route path={'/personalCubnet'} element={<PersonalCubnet/>} />
+                    <Route path={'/personalCubnet'} element={<PersonalCubnetContainer/>} />
                 </Routes>
             </div>
         </div>
