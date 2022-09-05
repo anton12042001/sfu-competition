@@ -18,12 +18,20 @@ const userProfileSlice = createSlice({
             state.photoURL = action.payload.photoURL
             state.emailVerified = action.payload.emailVerified
         },
-        editUserProfile(state,action) {
-            debugger
+        editUserProfileFullName(state,action) {
             state.displayName = action.payload
+        },
+        editUserProfileMail(state,action) {
+            state.email = action.payload
+        },
+        removeUserProfile(state,action){
+            state.displayName = null
+            state.email = null
+            state.photoURL = null
+            state.emailVerified = null
         }
     },
 })
-export const {setUserProfile,editUserProfile} = userProfileSlice.actions
+export const {setUserProfile,editUserProfileFullName,removeUserProfile,editUserProfileMail} = userProfileSlice.actions
 
 export default  userProfileSlice.reducer

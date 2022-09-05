@@ -1,26 +1,23 @@
 import React from 'react';
 import ChangeFullName from "./ChangeFullName";
-import {getAuth, updateProfile} from "firebase/auth";
-import {editUserProfile} from "../../../reduxTollkit/slices/userProfileSlice";
+import {getAuth} from "firebase/auth";
+import {editUserProfileFullName} from "../../../reduxTollkit/slices/userProfileSlice";
 import {useDispatch} from "react-redux";
+import {editProfileFullNameAPI} from "../../../api/editProfile/editProfileAPI";
 
 const ChangeFullNameContainer = (props) => {
 
     const dispatch = useDispatch()
 
     const sendFullName = (data) => {
-        const auth = getAuth();
-        updateProfile(auth.currentUser, {
-            displayName: `${data.displayName}`
-        }).then(() => {
-            debugger
-            dispatch(editUserProfile(auth.currentUser.displayName))
+        editProfileFullNameAPI(data)
+            .then(() => {
+            dispatch(editUserProfileFullName(getAuth().currentUser.displayName))
         }).catch((error) => {
 
         });
 
     }
-
 
     return (
         <div>
