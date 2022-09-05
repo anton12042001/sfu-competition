@@ -1,16 +1,15 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import cl from './PersonalCubnet.module.css'
+import ChangeFullName from "./ChangeFullName/ChangeFullName";
+import ChangeFullNameContainer from "./ChangeFullName/ChangeFullNameContainer";
 
 const PersonalCubnet = () => {
     const {displayName,email,photoURL,emailVerified} = useSelector(state => state.userProfile)
 
     return (
         <div className={cl.personalCubnetProfile} >
-            <div>
-                {displayName ? <div>Ваше имя: {displayName}</div>: <div>Вы безымянный абитурент, у вас нет имени. Установите его!</div>}
-                <button>Сменить имя</button>
-            </div>
+            <ChangeFullNameContainer displayName={displayName} />
 
 
 
