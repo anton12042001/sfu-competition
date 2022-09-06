@@ -10,7 +10,6 @@ const ChangeEmailInput = (props) => {
     } = useForm();
 
     const onSubmit = (data) => {
-        debugger
         props.changeEmail(data)
     }
 

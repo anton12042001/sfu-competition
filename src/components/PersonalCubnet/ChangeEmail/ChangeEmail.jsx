@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import ChangeEmailInput from "./ChangeEmailInput/ChangeEmailInput";
 
 const ChangeEmail = (props) => {
-    
+
     const [editModeEmail, setEditModeEmail] = useState(false)
 
     const changeEmail = (data) => {
@@ -11,11 +11,14 @@ const ChangeEmail = (props) => {
         props.updateMail(data)
     }
 
-    
+
     return (
         <div>
-            {editModeEmail === true ? <ChangeEmailInput changeEmail={changeEmail} setEditModeEmail={setEditModeEmail} /> : <div>Ваша почта: {props.email}</div>}
-            {!editModeEmail && <button onClick={() => setEditModeEmail(true)} >Сменить почту</button>}
+            {editModeEmail === true ?
+                <ChangeEmailInput changeEmail={changeEmail} setEditModeEmail={setEditModeEmail}/> :
+                <div>Ваша почта: {props.email}</div>}
+            {!editModeEmail && <button onClick={() => setEditModeEmail(true)}>Сменить почту</button>}
+
         </div>
     );
 };

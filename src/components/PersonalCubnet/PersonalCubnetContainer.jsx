@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import PersonalCubnet from "./PersonalCubnet";
 import {getAuth} from "firebase/auth";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setUserProfile} from "../../reduxTollkit/slices/userProfileSlice";
 
 const PersonalCubnetContainer = () => {
