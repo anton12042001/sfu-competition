@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import EmailVerification from "./EmailVerification";
-import {getAuth, sendEmailVerification} from "firebase/auth";
 import {sendMessagesAPI} from "../../api/sendEmailVerification/sendMessagesAPI";
 
 const EmailVerificationContainer = () => {
@@ -8,12 +7,9 @@ const EmailVerificationContainer = () => {
     const [timer,setTimer] = useState(false)
     const [ timerActive, setTimerActive ] = useState(false);
     const [ seconds, setSeconds ] = useState(60);
+    const [infMessages, setInfMessages] = useState(false)
 
 
-
-    useEffect(() => {
-        seconds === 60 && setTimer(false)
-    },[seconds])
 
     const verificationMail = () => {
         sendMessagesAPI()
@@ -21,24 +17,28 @@ const EmailVerificationContainer = () => {
                 setTimer(true)
                 setSendMessageToMail(true)
                 seconds !== 60 && setTimer(true)
-
                 setTimerActive(true)
             })
+            .catch(() => {
+                setInfMessages(true)
+            })
     }
+
 
 
     return (
         <div>
             <EmailVerification
+                setTimer={setTimer}
                 seconds={seconds}
                 setSeconds={setSeconds}
                 setTimerActive={setTimerActive}
                 timerActive={timerActive}
                 timer={timer}
-                setTimer={setTimer}
                 sendMessageToMail={sendMessageToMail}
                 verificationMail={verificationMail}
             />
+            {infMessages && <div>Возникла неизвестная ошибка... Повторите отправку через пару минут</div>}
         </div>
     );
 };

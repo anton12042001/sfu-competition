@@ -1,21 +1,23 @@
 import React, {useState} from 'react';
 import ChangeEmail from "./ChangeEmail";
-import {EmailAuthProvider, getAuth, reauthenticateWithCredential, updateEmail} from "firebase/auth";
+import {getAuth, updateEmail} from "firebase/auth";
 import {useDispatch} from "react-redux";
 import {editUserProfileMail} from "../../../reduxTollkit/slices/userProfileSlice";
 import ChangeEmailPopapForm from "./ChangeEmailPopapForm/ChangeEmailPopapForm";
 import cl from './ChangeEmail.module.css'
+import {reAuthAPI} from "../../../api/reAuth/reAuthAPI";
+import {useNavigate} from "react-router-dom";
+import {sendMessagesAPI} from "../../../api/sendEmailVerification/sendMessagesAPI";
 
 const ChangeEmailContainer = (props) => {
 
-    const [authPopap, setAuthPopap] = useState(true)
+    const [authPopap, setAuthPopap] = useState(false)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const auth = getAuth();
 
     const reauthorization = (data) => {
-        const credential = EmailAuthProvider.credential( data.email, data.password)
-        const user = getAuth().currentUser;
-        reauthenticateWithCredential(user, credential).then(() => {
+        reAuthAPI(data).then(() => {
             setAuthPopap(false)
         }).catch((error) => {
             console.log(error)
@@ -28,6 +30,9 @@ const ChangeEmailContainer = (props) => {
         updateEmail(auth.currentUser, `${data.email}`).then(() => {
             alert("Почта успешно обновлена")
             dispatch(editUserProfileMail(data.email))
+            sendMessagesAPI().then(r => {
+                navigate('/mailVerification')
+            })
         }).catch((error) => {
             setAuthPopap(true)
 

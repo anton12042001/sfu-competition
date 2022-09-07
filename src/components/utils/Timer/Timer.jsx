@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 
 const Timer = (props) => {
-
+debugger
 
     useEffect(() => {
         if (props.seconds > 0 && props.timerActive) {
@@ -9,6 +9,7 @@ const Timer = (props) => {
         } else {
             props.setTimerActive(false);
             (props.setSeconds(60))
+            props.setTimer(false)
         }
     }, [ props.seconds, props.timerActive ]);
 
