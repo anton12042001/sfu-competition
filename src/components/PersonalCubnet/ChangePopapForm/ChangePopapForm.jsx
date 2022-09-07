@@ -1,8 +1,8 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import cl from './ChangeEmailPopapForm.module.css'
+import cl from './ChangePopapForm.module.css'
 
-const ChangeEmailPopapForm = (props) => {
+const ChangePopapForm = (props) => {
 
     const {
         register,
@@ -27,4 +27,4 @@ const ChangeEmailPopapForm = (props) => {
     );
 };
 
-export default ChangeEmailPopapForm;
+export default ChangePopapForm;

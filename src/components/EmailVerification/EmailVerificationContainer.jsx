@@ -9,6 +9,10 @@ const EmailVerificationContainer = () => {
     const [ seconds, setSeconds ] = useState(60);
     const [infMessages, setInfMessages] = useState(false)
 
+    useEffect(() => {
+        setTimerActive(true)
+        setTimer(true)
+    },[])
 
 
     const verificationMail = () => {
