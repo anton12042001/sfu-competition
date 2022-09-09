@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import ChangePassword from "./ChangePassword";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {getAuth,sendPasswordResetEmail} from "firebase/auth";
+import {useSelector} from "react-redux";
+import {getAuth, sendPasswordResetEmail} from "firebase/auth";
 import {reAuthAPI} from "../../../api/reAuth/reAuthAPI";
 import cl from "../ChangeEmail/ChangeEmail.module.css";
 import ChangePopapForm from "../ChangePopapForm/ChangePopapForm";
@@ -11,8 +10,6 @@ const ChangePasswordContainer = () => {
 
     const {email} = useSelector(state => state.user)
     const [authPopap, setAuthPopap] = useState(false)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
     const auth = getAuth();
 
     const reauthorization = (data) => {
