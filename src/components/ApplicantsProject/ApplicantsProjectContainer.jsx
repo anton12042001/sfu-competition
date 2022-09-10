@@ -33,7 +33,7 @@ const ApplicantsProjectContainer = () => {
     if (!showProject.length) {
         return <div className={cl.notPosts}>Проектов не найдено...</div>
     }
-    
+
 
     return (
         <div>

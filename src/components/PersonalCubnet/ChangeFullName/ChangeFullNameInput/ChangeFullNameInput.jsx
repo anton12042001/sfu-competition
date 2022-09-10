@@ -1,11 +1,13 @@
 import React from 'react';
-import {useForm} from "react-hook-form";
+import {useForm, Controller} from "react-hook-form";
+import MyInputChangeFullName from "../../../UI/MyInputChangeFullName/MyInputChangeFullName";
 
 const ChangeFullNameInput = (props) => {
 
     const {
         register,
         handleSubmit,
+        control
     } = useForm();
 
     const onSubmit = (data) => {
@@ -15,7 +17,20 @@ const ChangeFullNameInput = (props) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register("displayName")} type="text"/>
+            <Controller
+                render={({field,fieldState}) => {
+                    return <MyInputChangeFullName type={"text"} placeholder={"Введите полное имя"}
+                                         label={"Полное имя"}
+                                         field={field}/>;
+                }}
+                defaultValue={props.displayName}
+                control={control}
+                name="displayName"
+                rules={{required: "Поле обязательно к заполнению!", minLength:{
+                        value: 5,
+                        message: "Минимум 5 символов"
+                    }}}
+            />
             <button type={"submit"}>Сохранить</button>
         </form>
     );

@@ -13,7 +13,7 @@ const ChangeFullName = ({displayName,sendFullName}) => {
     return (
         <div>
             {(editMode === true)
-                ? <ChangeFullNameInput changeFullName={changeFullName} />
+                ? <ChangeFullNameInput displayName={displayName} changeFullName={changeFullName} />
                 : displayName
                     ? <div>Ваше имя: {displayName}</div>
                     : <div>Вы безымянный абитурент, у вас нет имени. Установите его!</div>}
